@@ -3,16 +3,18 @@
 set -eu
 
 ARCH=$(uname -m)
-VERSION=$(pacman -Q PACKAGENAME | awk '{print $2; exit}') # example command to get version of application here
+VERSION=$(pacman -Q craftos-pc | awk '{print $2; exit}') # example command to get version of application here
 export ARCH VERSION
 export OUTPATH=./dist
 export ADD_HOOKS="self-updater.hook"
 export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
-export ICON=PATH_OR_URL_TO_ICON
-export DESKTOP=PATH_OR_URL_TO_DESKTOP_ENTRY
+export ICON=/usr/share/icons/hicolor/96x96/apps/craftos.png
+export DESKTOP=/usr/share/applications/CraftOS-PC.desktop
 
 # Deploy dependencies
-quick-sharun /PATH/TO/BINARY_AND_LIBRARIES_HERE
+quick-sharun \
+  /usr/bin/craftos  \
+  /usr/lib/libcraftos2-lua.so
 
 # Additional changes can be done in between here
 
