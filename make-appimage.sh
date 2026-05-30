@@ -14,6 +14,7 @@ export DESKTOP=/usr/share/applications/CraftOS-PC.desktop
 # Deploy dependencies
 quick-sharun \
   /usr/bin/craftos  \
+  /usr/share/craftos  \
   /usr/lib/libcraftos2-lua.so
 
 # Additional changes can be done in between here
